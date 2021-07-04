@@ -74,10 +74,11 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
+
 function vowelCount(str) {
 	let vowelObj = {};
-	for (let char of str) {
-		char.toLowerCase();
+	let newStr = str.toLowerCase().split('');
+	newStr.forEach(function(char) {
 		if ('aeiou'.indexOf(char) !== -1) {
 			if (vowelObj[char]) {
 				vowelObj[char]++;
@@ -85,7 +86,7 @@ function vowelCount(str) {
 				vowelObj[char] = 1;
 			}
 		}
-	}
+	});
 	return vowelObj;
 }
 
@@ -200,14 +201,14 @@ Examples:
 */
 
 function removeVowels(str) {
-	let newStr = '';
-	let lowerCaseStr = str.toLowerCase();
-	for (let char of lowerCaseStr) {
+	let noVowelStr = '';
+	let newStr = str.toLowerCase().split('');
+	newStr.filter(function(char) {
 		if ('aeiou'.indexOf(char) === -1) {
-			newStr = newStr.concat(char);
+			noVowelStr = noVowelStr.concat(char);
 		}
-	}
-	return newStr;
+	});
+	return noVowelStr;
 }
 
 /*
